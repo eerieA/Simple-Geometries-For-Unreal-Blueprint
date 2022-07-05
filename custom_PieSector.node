@@ -1,0 +1,20 @@
+{
+    //Input variable - fragCoord, usually TextureCoordinate node in Unreal
+	float2 uv = fragCoord.xy;
+
+    //Input variable - radius
+    float radius = iRadius;
+
+    uv -= float2(0.5, 0.5);
+    float r = length(uv);
+    float theta = atan2(uv.y, uv.x) + 3.1415926535;
+    float fragColor = 1;
+
+    //Input variable - fragAngle, meaning the radian distance from the start
+    if (r <= radius && theta >= fromAngle && theta < toAngle){
+        fragColor = 1;
+    } else {
+        fragColor = 0;
+    }
+    return float3(fragColor, fragColor, fragColor);
+}

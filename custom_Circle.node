@@ -1,0 +1,14 @@
+//Mainly using step(edge, x) to display white color for each pixel within a circular area
+#define PI 3.14159265359
+
+{
+    //Input variable - radius
+    float radius = iRadius;
+
+    //Input variable - fragCoord, usually TextureCoordinate node in Unreal
+    float2 fragPos = fragCoord.xy - 0.5;
+    float2 normalFragPos = normalize(fragCoord.xy - 0.5);
+              
+    float circle = step(length(fragPos), iRadius);
+    return float3(circle, circle, circle);
+}
